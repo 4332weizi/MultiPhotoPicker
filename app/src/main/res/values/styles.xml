@@ -1,7 +1,12 @@
 <resources>
 
     <!-- Base application theme. -->
-    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+    <style name="AppBaseTheme" parent="@style/android:Theme.Light">
+        <!-- Customize your theme here. -->
+        <item name="android:windowTitleSize">48dp</item>
+        <item name="android:padding">0dp</item>
+    </style>
+    <style name="AppTheme" parent="AppBaseTheme">
         <!-- Customize your theme here. -->
     </style>
 

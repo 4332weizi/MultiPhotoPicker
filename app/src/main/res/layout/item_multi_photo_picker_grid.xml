@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="140dp"
+    android:layout_height="140dp"
+    android:background="#11ffffff">
+
+    <ImageView
+        android:id="@+id/multi_photo_picker_photo"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:scaleType="center"
+        android:src="@mipmap/icon_picture" />
+
+    <CheckBox
+        android:id="@+id/multi_photo_picker_selector"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentTop="true"
+        android:button="@null"
+        android:checked="false"
+        android:focusable="false"
+        android:clickable="false"
+        android:focusableInTouchMode="false"
+        android:drawableRight="@drawable/item_multi_photo_picker_checkbox_selector"
+        android:padding="10dp" />
+
+</RelativeLayout>

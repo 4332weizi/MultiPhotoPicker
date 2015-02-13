@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="@dimen/title_bar_height"
+    android:background="@color/title_bar_background"
+    android:orientation="horizontal">
+
+    <TextView
+        android:id="@+id/title_bar_back"
+        android:layout_width="wrap_content"
+        android:layout_height="fill_parent"
+        android:layout_alignParentLeft="true"
+        android:layout_centerVertical="true"
+        android:drawableLeft="@mipmap/icon_back"
+        android:background="@drawable/title_bar_back_background"
+        android:padding="10dp"
+        android:text="   " />
+
+    <Button
+        android:id="@+id/title_bar_function"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_centerVertical="true"
+        android:layout_marginRight="9dp"
+        android:background="@drawable/title_bar_function_background"
+        android:gravity="center"
+        android:padding="10dp"
+        android:text="发送"
+        android:textColor="@drawable/title_bar_function_text"
+        android:textSize="16sp" />
+
+    <TextView
+        android:id="@+id/title_bar_title"
+        android:layout_width="wrap_content"
+        android:layout_height="fill_parent"
+        android:layout_centerInParent="true"
+        android:layout_toLeftOf="@id/title_bar_function"
+        android:layout_toRightOf="@id/title_bar_back"
+        android:gravity="center"
+        android:text="title"
+        android:textColor="@color/title_bar_title"
+        android:textSize="18sp" />
+
+</RelativeLayout>

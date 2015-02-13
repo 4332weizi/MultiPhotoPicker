@@ -9,7 +9,15 @@
     tools:context=".MainActivity">
 
     <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+        android:id="@+id/main_pick_photo_button"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:background="@drawable/title_bar_function_background_disabled"
+        android:gravity="center"
+        android:padding="10dp"
+        android:text="选择照片"
+        android:textColor="#ffffff"
+        android:textSize="18sp" />
 
 </RelativeLayout>

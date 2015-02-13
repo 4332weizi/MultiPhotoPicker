@@ -1,0 +1,49 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:padding="0dp"
+    android:background="@color/activity_picker_background"
+    tools:context="net.funol.multiphotopicker.activity.MultiPhotoPicker">
+
+
+    <GridView
+        android:id="@+id/multi_photo_picker_photo_grid"
+        android:layout_width="fill_parent"
+        android:numColumns="3"
+        android:horizontalSpacing="5dp"
+        android:verticalSpacing="5dp"
+        android:background="@android:color/transparent"
+        android:layout_height="fill_parent">
+
+    </GridView>
+
+    <RelativeLayout
+        android:layout_width="fill_parent"
+        android:background="#4422292c"
+        android:layout_alignParentBottom="true"
+        android:layout_height="@dimen/title_bar_height">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="fill_parent"
+            android:textSize="18sp"
+            android:textColor="#ffffff"
+            android:padding="10dp"
+            android:layout_alignParentLeft="true"
+            android:gravity="center"
+            android:text="album name"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="fill_parent"
+            android:padding="10dp"
+            android:textSize="18sp"
+            android:gravity="center"
+            android:layout_alignParentRight="true"
+            android:text="预览"
+            android:textColor="#ffffff"/>
+
+    </RelativeLayout>
+
+</RelativeLayout>

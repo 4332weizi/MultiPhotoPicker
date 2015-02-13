@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="title_bar_background">#22292c</color>
+    <color name="title_bar_title">#ffffff</color>
+    <color name="title_bar_function_button_text_disable">#99ba91</color>
+    <color name="title_bar_function_button_text_enable">#ffffff</color>
+    <color name="title_bar_back_button_bacground_pressed">#44000000</color>
+    <color name="title_bar_back_button_bacground_normal">#00000000</color>
+    <color name="activity_picker_background">#191919</color>
+</resources>
