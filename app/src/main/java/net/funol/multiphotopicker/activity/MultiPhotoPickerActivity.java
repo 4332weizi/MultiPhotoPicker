@@ -5,7 +5,6 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
-import android.util.Log;
 import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.TranslateAnimation;
@@ -27,9 +26,8 @@ import net.funol.utils.Screen;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
-import java.util.Set;
 
-public class MultiPhotoPicker extends CustomTitleBarActivity implements View.OnClickListener, AdapterView.OnItemClickListener, MultiPhotoPickerAdapter.ImageSelectChangeListener {
+public class MultiPhotoPickerActivity extends CustomTitleBarActivity implements View.OnClickListener, AdapterView.OnItemClickListener, MultiPhotoPickerAdapter.ImageSelectChangeListener {
 
     private MultiPhotoPickerAdapter adapter;
     private GridView mPhotoGrid;
@@ -38,6 +36,7 @@ public class MultiPhotoPicker extends CustomTitleBarActivity implements View.OnC
     private ListView mFolderList;
 
     private TextView mAlbumPicker;
+    private TextView mPreview;
 
     private List<ImageFloder> mFolderDataList;
     private Map<String, ImageFloder> mImageFolderMap;
@@ -81,6 +80,8 @@ public class MultiPhotoPicker extends CustomTitleBarActivity implements View.OnC
 
         mAlbumPicker = (TextView) findViewById(R.id.multi_photo_picker_album_picker);
         mAlbumPicker.setOnClickListener(this);
+        mPreview = (TextView) findViewById(R.id.multi_photo_preview);
+        mPreview.setOnClickListener(this);
 
         adapter = new MultiPhotoPickerAdapter(this);
         adapter.setMaxImages(MAX_IMAGES);
@@ -116,7 +117,7 @@ public class MultiPhotoPicker extends CustomTitleBarActivity implements View.OnC
 
             mFolderDataList = new ArrayList<ImageFloder>(mImageFolderMap.values());
 
-            FolderListAdapter mFolderListAdapter = new FolderListAdapter(MultiPhotoPicker.this);
+            FolderListAdapter mFolderListAdapter = new FolderListAdapter(MultiPhotoPickerActivity.this);
             mFolderListAdapter.setDatas(mFolderDataList);
             mFolderList.setAdapter(mFolderListAdapter);
 
@@ -194,6 +195,11 @@ public class MultiPhotoPicker extends CustomTitleBarActivity implements View.OnC
                 } else {
                     closeFolderList();
                 }
+                break;
+            case R.id.multi_photo_preview:
+                Intent intent = new Intent();
+                intent.setClass(this,PreviewImagesActivity.class);
+                startActivity(intent);
                 break;
         }
     }

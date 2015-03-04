@@ -1,0 +1,37 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/activity_picker_background"
+    tools:context="net.funol.multiphotopicker.activity.PreviewImagesActivity">
+
+
+    <RelativeLayout
+        android:id="@+id/preview_images_bottom"
+        android:layout_width="fill_parent"
+        android:layout_height="@dimen/title_bar_height"
+        android:layout_alignParentBottom="true"
+        android:background="#cc22292c">
+
+        <CheckBox
+            android:layout_alignParentRight="true"
+            android:layout_width="wrap_content"
+            android:text="选择"
+            android:textColor="#ffffff"
+            android:gravity="center"
+            android:paddingRight="10dp"
+            android:textSize="18sp"
+            android:layout_height="fill_parent" />
+
+    </RelativeLayout>
+
+
+    <android.support.v4.view.ViewPager
+        android:id="@+id/preview_images_pager"
+        android:layout_above="@id/preview_images_bottom"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent">
+
+    </android.support.v4.view.ViewPager>
+
+</RelativeLayout>

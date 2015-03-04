@@ -4,7 +4,7 @@
     android:layout_height="fill_parent"
     android:background="@color/activity_picker_background"
     android:padding="0dp"
-    tools:context="net.funol.multiphotopicker.activity.MultiPhotoPicker">
+    tools:context="net.funol.multiphotopicker.activity.MultiPhotoPickerActivity">
 
 
     <GridView
@@ -41,6 +41,7 @@
             android:textSize="18sp" />
 
         <TextView
+            android:id="@+id/multi_photo_preview"
             android:layout_width="wrap_content"
             android:layout_height="fill_parent"
             android:layout_alignParentRight="true"
