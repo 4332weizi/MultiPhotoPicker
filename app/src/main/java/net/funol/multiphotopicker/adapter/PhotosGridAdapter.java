@@ -29,7 +29,7 @@ public class PhotosGridAdapter extends BaseAdapter {
     private Context context;
     private LayoutInflater inflater;
 
-    private List<Parcelable> datas;
+    private List<Uri> datas;
 
     private int width = 0;
 
@@ -39,7 +39,7 @@ public class PhotosGridAdapter extends BaseAdapter {
         width = Screen.getWidthPixels(context) / 3;
     }
 
-    public void setDatas(List<Parcelable> datas) {
+    public void setDatas(List<Uri> datas) {
         this.datas = datas;
     }
 
@@ -53,7 +53,7 @@ public class PhotosGridAdapter extends BaseAdapter {
 
     @Override
     public Uri getItem(int position) {
-        return (Uri)datas.get(position);
+        return datas.get(position);
     }
 
     @Override

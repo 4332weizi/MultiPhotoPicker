@@ -21,6 +21,8 @@ public class MainActivity extends CustomTitleBarActivity implements View.OnClick
 
     private PhotosGridAdapter adapter;
 
+    private static final int REQUEST_CODE = 0;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -64,10 +66,10 @@ public class MainActivity extends CustomTitleBarActivity implements View.OnClick
         switch (v.getId()) {
             case R.id.main_pick_photo_button:
                 Intent intent = new Intent();
-//                intent.setClass(this,MultiPhotoPicker.class);
-                //intent.setAction("funol.intent.action.PICK_PHOTO");
+                // intent.setAction(getResources().getString(R.string.action_photo_picker));
+                // intent.setAction(getResources().getString(R.string.action_multi_photo_picker));
                 intent.setData(Uri.parse("pick://images.funol.net/number/20"));
-                startActivityForResult(intent,0);
+                startActivityForResult(intent, REQUEST_CODE);
                 break;
         }
     }
@@ -75,7 +77,10 @@ public class MainActivity extends CustomTitleBarActivity implements View.OnClick
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        adapter.setDatas(data.getParcelableArrayListExtra("photos"));
-        adapter.notifyDataSetChanged();
+        if (resultCode == RESULT_OK && requestCode == REQUEST_CODE) {
+            List<Uri> uris = data.getParcelableArrayListExtra("photos");
+            adapter.setDatas(uris);
+            adapter.notifyDataSetChanged();
+        }
     }
 }
