@@ -6,5 +6,7 @@
     <string name="action_settings">Settings</string>
     <string name="title_activity_custom_title_bar">CustomTitleBarActivity</string>
     <string name="title_activity_multi_photo_picker">MultiPhotoPicker</string>
+    <string name="action_photo_picker">funol.intent.action.PICK_PHOTO</string>
+    <string name="action_multi_photo_picker">funol.intent.action.PICK_MULTI_PHOTO</string>
 
 </resources>

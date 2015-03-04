@@ -22,7 +22,17 @@
         </activity>
         <activity
             android:name=".activity.MultiPhotoPicker"
-            android:label="@string/title_activity_multi_photo_picker" >
+            android:label="@string/title_activity_multi_photo_picker">
+            <intent-filter>
+                <action android:name="funol.intent.action.PICK_MULTI_PHOTO"/>
+                <action android:name="funol.intent.action.PICK_PHOTO"/>
+                <data
+                    android:host="images.funol.net"
+                    android:pathPrefix="/number"
+                    android:scheme="pick" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
         </activity>
     </application>
 

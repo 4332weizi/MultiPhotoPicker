@@ -7,4 +7,7 @@
     <color name="title_bar_back_button_bacground_pressed">#44000000</color>
     <color name="title_bar_back_button_bacground_normal">#00000000</color>
     <color name="activity_picker_background">#191919</color>
+
+    <color name="folder_name_pressed">#cccccccc</color>
+    <color name="folder_name_normal">#ffffff</color>
 </resources>

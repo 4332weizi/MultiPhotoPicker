@@ -2,13 +2,17 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="140dp"
     android:layout_height="140dp"
-    android:background="#11ffffff">
+    android:padding="5dp"
+    android:background="@android:color/transparent"
+    android:touchscreenBlocksFocus="true">
 
     <ImageView
         android:id="@+id/multi_photo_picker_photo"
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
-        android:scaleType="center"
+        android:background="#11ffffff"
+        android:scaleType="centerCrop"
+        android:layout_centerInParent="true"
         android:src="@mipmap/icon_picture" />
 
     <CheckBox
