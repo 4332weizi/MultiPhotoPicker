@@ -87,7 +87,7 @@ public class MultiPhotoPickerActivity extends CustomTitleBarActivity implements 
         adapter.setMaxImages(MAX_IMAGES);
         adapter.setOnImageSelectChangeListener(this);
         mPhotoGrid.setAdapter(adapter);
-        mPhotoGrid.setColumnWidth(Screen.getWidthPixels(this)/3);
+        mPhotoGrid.setColumnWidth(Screen.getWidthPixels(this) / 3);
 
         AlbumScanner scanner = new AlbumScanner(this);
         scanner.setEventHandler(new AlbumScanner.EventHandler() {
@@ -198,7 +198,8 @@ public class MultiPhotoPickerActivity extends CustomTitleBarActivity implements 
                 break;
             case R.id.multi_photo_preview:
                 Intent intent = new Intent();
-                intent.setClass(this,PreviewImagesActivity.class);
+                intent.setClass(this, PreviewImagesActivity.class);
+                intent.putParcelableArrayListExtra("photos", new ArrayList<Uri>(adapter.getSelectedImages()));
                 startActivity(intent);
                 break;
         }

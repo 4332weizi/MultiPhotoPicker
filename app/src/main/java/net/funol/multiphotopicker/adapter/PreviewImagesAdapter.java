@@ -6,7 +6,12 @@ import android.support.v4.view.PagerAdapter;
 import android.view.View;
 import android.view.ViewGroup;
 
+import net.funol.utils.ImageLoader;
+
 import java.util.List;
+
+import uk.co.senab.photoview.PhotoView;
+
 
 /**
  * Created by DZY-ZWW on 03-4.
@@ -20,37 +25,42 @@ public class PreviewImagesAdapter extends PagerAdapter {
         this.context = context;
     }
 
+    public List<Uri> getDatas() {
+        return datas;
+    }
+
+    public void setDatas(List<Uri> datas) {
+        this.datas = datas;
+    }
+
     @Override
     public int getCount() {
-        if (datas == null) {
+        if(datas == null){
             return 0;
         }
         return datas.size();
     }
 
     @Override
-    public boolean isViewFromObject(View view, Object object) {
-        return view == object;
+    public View instantiateItem(ViewGroup container, int position) {
+        PhotoView photoView = new PhotoView(container.getContext());
+        photoView.setImageURI(datas.get(position));
+        //ImageLoader.getInstance().loadImage(datas.get(position).toString(),photoView);
+
+        // Now just add PhotoView to ViewPager and return it
+        container.addView(photoView, ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT);
+
+        return photoView;
     }
 
     @Override
     public void destroyItem(ViewGroup container, int position, Object object) {
-        super.destroyItem(container, position, object);
+        container.removeView((View) object);
     }
 
     @Override
-    public Object instantiateItem(ViewGroup container, int position) {
-        return super.instantiateItem(container, position);
-    }
-
-    @Override
-    public void finishUpdate(ViewGroup container) {
-        super.finishUpdate(container);
-    }
-
-    @Override
-    public void startUpdate(ViewGroup container) {
-        super.startUpdate(container);
+    public boolean isViewFromObject(View view, Object object) {
+        return view == object;
     }
 
 }
