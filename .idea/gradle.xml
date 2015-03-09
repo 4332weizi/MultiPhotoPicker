@@ -9,7 +9,9 @@
           <set>
             <option value="$PROJECT_DIR$" />
             <option value="$PROJECT_DIR$/app" />
+            <option value="$PROJECT_DIR$/gestureimageview" />
             <option value="$PROJECT_DIR$/photoview" />
+            <option value="$PROJECT_DIR$/subsamplingscaleimageview" />
           </set>
         </option>
       </GradleProjectSettings>

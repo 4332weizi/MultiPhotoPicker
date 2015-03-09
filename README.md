@@ -2,6 +2,10 @@
 
 Android仿微信多图片选择器
 
+**bug:** 预览加载大图容易内存溢出。</br>
+	图片加载暂使用[subsampling-scale-image-view](https://github.com/davemorrissey/subsampling-scale-image-view)</br>
+**使用方法：**[如何使用](#howto)
+
 ##ScreenShots
 
 ![Alt text](/screenshots/device-2015-03-04-164457.png)
@@ -9,7 +13,7 @@ Android仿微信多图片选择器
 ![Alt text](/screenshots/device-2015-03-04-184645.png)
 ![Alt text](/screenshots/device-2015-03-04-164842.png)
 
-##如何使用
+##<a name="howto">如何使用
 将工程clone在你的工作目录中，并导入至项目工程中。</br>
 ###启动选择页面
 ####返回一张图片
