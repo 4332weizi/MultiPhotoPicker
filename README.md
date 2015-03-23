@@ -2,8 +2,12 @@
 
 Android仿微信多图片选择器
 
-**bug:** 预览加载大图容易内存溢出。</br>
-	图片加载暂使用[subsampling-scale-image-view](https://github.com/davemorrissey/subsampling-scale-image-view)</br>
+**bug:** 预览加载大图容易内存溢出。
+
+
+图片加载暂使用[subsampling-scale-image-view](https://github.com/davemorrissey/subsampling-scale-image-view)
+
+
 **使用方法：**[如何使用](#howto)
 
 ##ScreenShots
