@@ -80,50 +80,54 @@ public class AlbumScanner {
 
                 L.i(mCursor.getCount() + "");
                 while (mCursor.moveToNext()) {
-                    // get image path
-                    String path = mCursor.getString(mCursor
-                            .getColumnIndex(MediaStore.Images.Media.DATA));
+                    try {
+                        // get image path
+                        String path = mCursor.getString(mCursor
+                                .getColumnIndex(MediaStore.Images.Media.DATA));
 
-                    L.i(path);
-                    // 取出第一张图片的路径
-                    if (firstImage == null)
-                        firstImage = path;
-                    // 获取文件夹路径
-                    File parentFile = new File(path).getParentFile();
-                    if (parentFile == null)
-                        continue;
-                    String dirPath = parentFile.getAbsolutePath();
-                    ImageFloder imageFloder = null;
-                    // 利用一个HashSet防止多次扫描同一个文件夹（不加这个判断，图片多起来还是相当恐怖的~~）
-                    if (mScannedPaths.contains(dirPath)) {
-                        mFolderMap.get(dirPath).addImage(path);
-                        continue;
-                    } else {
+                        L.i(path);
+                        // 取出第一张图片的路径
+                        if (firstImage == null)
+                            firstImage = path;
+                        // 获取文件夹路径
+                        File parentFile = new File(path).getParentFile();
+                        if (parentFile == null)
+                            continue;
+                        String dirPath = parentFile.getAbsolutePath();
+                        ImageFloder imageFloder = null;
+                        // 利用一个HashSet防止多次扫描同一个文件夹（不加这个判断，图片多起来还是相当恐怖的~~）
+                        if (mScannedPaths.contains(dirPath)) {
+                            mFolderMap.get(dirPath).addImage(path);
+                            continue;
+                        } else {
 
-                        mScannedPaths.add(dirPath);
+                            mScannedPaths.add(dirPath);
 
-                        imageFloder = new ImageFloder();
-                        imageFloder.setDir(dirPath);
-                        imageFloder.setFirstImagePath(path);
-                        imageFloder.addImage(path);
-                        mFolderMap.put(dirPath, imageFloder);
-                    }
-
-                    int picSize = parentFile.list(new FilenameFilter() {
-                        @Override
-                        public boolean accept(File dir, String filename) {
-                            if (filename.endsWith(".jpg")
-                                    || filename.endsWith(".png")
-                                    || filename.endsWith(".jpeg"))
-                                return true;
-                            return false;
+                            imageFloder = new ImageFloder();
+                            imageFloder.setDir(dirPath);
+                            imageFloder.setFirstImagePath(path);
+                            imageFloder.addImage(path);
+                            mFolderMap.put(dirPath, imageFloder);
                         }
-                    }).length;
-                    totalImagesCount += picSize;
 
-                    if (picSize > mImageCountOfFolder) {
-                        mImageCountOfFolder = picSize;
-                        mFolderWithMostImages = parentFile;
+                        int picSize = parentFile.list(new FilenameFilter() {
+                            @Override
+                            public boolean accept(File dir, String filename) {
+                                if (filename.endsWith(".jpg")
+                                        || filename.endsWith(".png")
+                                        || filename.endsWith(".jpeg"))
+                                    return true;
+                                return false;
+                            }
+                        }).length;
+                        totalImagesCount += picSize;
+
+                        if (picSize > mImageCountOfFolder) {
+                            mImageCountOfFolder = picSize;
+                            mFolderWithMostImages = parentFile;
+                        }
+                    } catch (NullPointerException e) {
+                        e.printStackTrace();
                     }
                 }
                 mCursor.close();
