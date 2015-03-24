@@ -5,6 +5,7 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
+import android.text.TextUtils;
 import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.TranslateAnimation;
@@ -24,8 +25,10 @@ import net.funol.utils.L;
 import net.funol.utils.Screen;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 
 public class MultiPhotoPickerActivity extends CustomTitleBarActivity implements View.OnClickListener, AdapterView.OnItemClickListener, MultiPhotoPickerAdapter.ImageSelectChangeListener {
 
@@ -180,8 +183,12 @@ public class MultiPhotoPickerActivity extends CustomTitleBarActivity implements 
 
     @Override
     protected void onFunctionClicked(View view) {
+        retrunImages(new ArrayList<Uri>(adapter.getSelectedImages()));
+    }
+
+    private void retrunImages(ArrayList<Uri> images) {
         Intent intent = new Intent();
-        intent.putParcelableArrayListExtra("photos", new ArrayList<Uri>(adapter.getSelectedImages()));
+        intent.putParcelableArrayListExtra("photos", images);
         setResult(RESULT_OK, intent);
         finish();
     }
@@ -200,8 +207,50 @@ public class MultiPhotoPickerActivity extends CustomTitleBarActivity implements 
                 Intent intent = new Intent();
                 intent.setClass(this, PreviewImagesActivity.class);
                 intent.putParcelableArrayListExtra("photos", new ArrayList<Uri>(adapter.getSelectedImages()));
-                startActivity(intent);
+                startActivityForResult(intent, REQUEST_PREVIEW_IMAGES);
                 break;
+        }
+    }
+
+    private final int REQUEST_PREVIEW_IMAGES = 1;
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode == REQUEST_PREVIEW_IMAGES && data != null) {
+            ArrayList<Uri> uris = data.getParcelableArrayListExtra("photos");
+            if (resultCode == RESULT_OK) {
+                retrunImages(uris);
+            } else {
+                updateFolderData(uris);
+                refreshImages();
+                onSelectChanged(null, -1);
+            }
+        }
+    }
+
+    private void updateFolderData(List<Uri> uris) {
+
+        Set<String> selectedImages = new HashSet<String>();
+        for (Uri uri : uris) {
+            selectedImages.add(uri.toString());
+        }
+
+        Set<String> keys = mImageFolderMap.keySet();
+        for (String key : keys) {
+            ImageFloder floder = mImageFolderMap.get(key);
+            List<Uri> images = floder.getImages();
+            int i = 0;
+            for (Uri image : images) {
+                if (selectedImages.contains(image.toString())) {
+                    floder.selectImage(i);
+                } else {
+                    floder.unSelectedImage(i);
+                    adapter.unSelectedImage(image);
+                }
+                i++;
+            }
+            mImageFolderMap.put(key, floder);
         }
     }
 

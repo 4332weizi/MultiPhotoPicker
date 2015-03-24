@@ -67,6 +67,10 @@ public class MultiPhotoPickerAdapter extends BaseAdapter {
         this.selectedImages = selectedImages;
     }
 
+    public void unSelectedImage(Uri uri){
+        selectedImages.remove(uri);
+    }
+
     @Override
     public int getCount() {
         if (datas == null) {
@@ -119,6 +123,14 @@ public class MultiPhotoPickerAdapter extends BaseAdapter {
                 }
             }
         });
+
+        if (selectedImages.contains(getItem(position))) {
+            holder.mSelector.setChecked(true);
+            selectedImages.add(getItem(position));
+        } else {
+            holder.mSelector.setChecked(false);
+            selectedImages.remove(getItem(position));
+        }
 
         holder.mPhoto.setImageResource(R.mipmap.icon_picture);
         holder.mSelector.setChecked(datas.isSelected(position));

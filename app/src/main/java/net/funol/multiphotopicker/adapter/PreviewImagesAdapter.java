@@ -12,6 +12,7 @@ import com.davemorrissey.labs.subscaleview.ScaleImageView;
 import com.davemorrissey.labs.subscaleview.SubsamplingScaleImageView;
 import com.polites.android.GestureImageView;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
@@ -22,17 +23,17 @@ import java.util.Objects;
 public class PreviewImagesAdapter extends PagerAdapter {
 
     private Context context;
-    private List<Uri> datas;
+    private ArrayList<Uri> datas;
 
     public PreviewImagesAdapter(Context context) {
         this.context = context;
     }
 
-    public List<Uri> getDatas() {
+    public ArrayList<Uri> getDatas() {
         return datas;
     }
 
-    public void setDatas(List<Uri> datas) {
+    public void setDatas(ArrayList<Uri> datas) {
         this.datas = datas;
     }
 
